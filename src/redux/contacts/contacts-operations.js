@@ -1,7 +1,7 @@
 import axios from 'axios'
 import actions from './contacts-action'
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3004'
 
 export const fatchContact = () => async (dispatch) => {
   dispatch(actions.fatchContactRequest())
@@ -9,7 +9,7 @@ export const fatchContact = () => async (dispatch) => {
     const { data } = await axios.get('/contacts')
     dispatch(actions.fatchContactSuccess(data))
   } catch (error) {
-    dispatch(actions.fatchContactError(error))
+    dispatch(actions.fatchContactError(error.message))
   }
   // const response = await axios
   //   .get('/contacts')
